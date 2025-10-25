@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# TicketFlow - React Implementation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern ticket management application built with React, TypeScript, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** 19.1.1 - UI library
+- **TypeScript** 5.9.3 - Type safety
+- **Vite** 7.1.7 - Build tool
+- **Tailwind CSS** 4.1.16 - Styling
+- **React Router** 7.9.4 - Routing
+- **Lucide React** 0.548.0 - Icons
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/          # Reusable components
+│   ├── layout/         # Layout components (Header, Footer)
+│   ├── decorative/     # Decorative elements (WavyBackground, DecorativeCircle)
+│   └── cards/          # Card components (FeatureCard)
+├── pages/              # Page components
+│   └── Home/           # Landing page
+├── types/              # TypeScript type definitions
+├── lib/                # Utilities and router configuration
+└── App.tsx             # Root component
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Setup Instructions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+4. **Preview production build**
+   ```bash
+   npm run preview
+   ```
+
+## Features Implemented
+
+### Landing Page
+- ✅ Hero section with wavy SVG background
+- ✅ Decorative circles for visual interest
+- ✅ Responsive feature cards grid
+- ✅ CTA buttons (Login, Get Started)
+- ✅ Max-width 1440px centered layout
+- ✅ Fully responsive design (mobile, tablet, desktop)
+- ✅ Semantic HTML and accessibility compliance
+
+## UI Components
+
+### Layout Components
+- **Header**: Navigation with logo and CTA buttons
+- **Footer**: Consistent footer with copyright and links
+
+### Decorative Components
+- **WavyBackground**: SVG wave pattern for hero section
+- **DecorativeCircle**: Customizable circular decorative element
+
+### Content Components
+- **FeatureCard**: Card component for displaying features
+
+## Accessibility
+
+- Semantic HTML elements (header, nav, main, footer, section)
+- ARIA attributes for decorative elements (aria-hidden)
+- Keyboard navigation support
+- Sufficient color contrast ratios
+- Responsive text sizing
+- Focus states for interactive elements
+
+## Responsive Breakpoints
+
+- Mobile: < 768px (single column)
+- Tablet: 768px - 1024px (2 columns)
+- Desktop: > 1024px (3 columns, max-width 1440px)
+
+## Known Issues
+
+None at this time.
+
+## Future Features
+
+- Authentication pages (Login/Signup)
+- Dashboard with ticket statistics
+- Ticket management (CRUD operations)
+- Protected routes with session management
+
+## License
+
+MIT
