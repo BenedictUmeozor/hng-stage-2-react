@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from "react";
 
 interface UseFormOptions<T> {
   initialValues: T;
@@ -7,7 +7,7 @@ interface UseFormOptions<T> {
 }
 
 export const useForm = <T extends Record<string, string>>(
-  options: UseFormOptions<T>
+  options: UseFormOptions<T>,
 ) => {
   const { initialValues, validate, onSubmit } = options;
   const [values, setValues] = useState<T>(initialValues);
@@ -15,34 +15,43 @@ export const useForm = <T extends Record<string, string>>(
   const [touched, setTouched] = useState<Partial<Record<keyof T, boolean>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = useCallback((name: keyof T, value: string) => {
-    setValues(prev => ({ ...prev, [name]: value }));
-    if (touched[name]) {
-      const validationErrors = validate({ ...values, [name]: value });
-      setErrors(prev => ({ ...prev, [name]: validationErrors[name] }));
-    }
-  }, [values, touched, validate]);
+  const handleChange = useCallback(
+    (name: keyof T, value: string) => {
+      setValues((prev) => ({ ...prev, [name]: value }));
+      if (touched[name]) {
+        const validationErrors = validate({ ...values, [name]: value });
+        setErrors((prev) => ({ ...prev, [name]: validationErrors[name] }));
+      }
+    },
+    [values, touched, validate],
+  );
 
-  const handleBlur = useCallback((name: keyof T) => {
-    setTouched(prev => ({ ...prev, [name]: true }));
-    const validationErrors = validate(values);
-    setErrors(prev => ({ ...prev, [name]: validationErrors[name] }));
-  }, [values, validate]);
+  const handleBlur = useCallback(
+    (name: keyof T) => {
+      setTouched((prev) => ({ ...prev, [name]: true }));
+      const validationErrors = validate(values);
+      setErrors((prev) => ({ ...prev, [name]: validationErrors[name] }));
+    },
+    [values, validate],
+  );
 
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
-    
-    if (Object.keys(validationErrors).length > 0) return;
-    
-    setIsSubmitting(true);
-    try {
-      await onSubmit(values);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [values, validate, onSubmit]);
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      const validationErrors = validate(values);
+      setErrors(validationErrors);
+
+      if (Object.keys(validationErrors).length > 0) return;
+
+      setIsSubmitting(true);
+      try {
+        await onSubmit(values);
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [values, validate, onSubmit],
+  );
 
   const isValid = Object.keys(errors).length === 0;
 

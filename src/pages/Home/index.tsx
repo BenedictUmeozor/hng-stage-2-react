@@ -1,10 +1,10 @@
+import FeatureCard from "@/components/cards/FeatureCard";
 import DecorativeCircle from "@/components/decorative/DecorativeCircle";
 import WavyBackground from "@/components/decorative/WavyBackground";
-import FeatureCard from "@/components/cards/FeatureCard";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import { Link } from "react-router";
 import { Shield, Ticket, Zap } from "lucide-react";
+import { Link } from "react-router";
 
 const HomePage = () => {
   return (
@@ -12,9 +12,9 @@ const HomePage = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-br from-blue-50 to-indigo-100 pb-32 pt-20">
+      <section className="relative overflow-hidden bg-linear-to-br from-blue-50 to-indigo-100 pt-20 pb-32">
         <DecorativeCircle
-          className="absolute -right-12 -top-12 opacity-50"
+          className="absolute -top-12 -right-12 opacity-50"
           size="xl"
           color="bg-blue-300"
         />
@@ -49,7 +49,7 @@ const HomePage = () => {
       {/* Features Section */}
       <section className="relative py-20">
         <DecorativeCircle
-          className="absolute -left-20 bottom-10 opacity-30"
+          className="absolute bottom-10 -left-20 opacity-30"
           size="lg"
           color="bg-indigo-200"
         />

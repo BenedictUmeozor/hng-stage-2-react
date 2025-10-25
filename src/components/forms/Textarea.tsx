@@ -1,11 +1,18 @@
-import type { InputHTMLAttributes } from "react";
+import type { TextareaHTMLAttributes } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   error?: string;
+  rows?: number;
 }
 
-export function Input({ label, error, id, ...props }: InputProps) {
+export function Textarea({
+  label,
+  error,
+  id,
+  rows = 4,
+  ...props
+}: TextareaProps) {
   return (
     <div className="w-full">
       <label
@@ -14,10 +21,11 @@ export function Input({ label, error, id, ...props }: InputProps) {
       >
         {label}
       </label>
-      <input
+      <textarea
         id={id}
+        rows={rows}
         {...props}
-        className={`w-full rounded-lg border px-4 py-2 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 ${
+        className={`resize-vertical w-full rounded-lg border px-4 py-2 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 ${
           error ? "border-red-500" : "border-gray-300"
         }`}
         aria-invalid={!!error}

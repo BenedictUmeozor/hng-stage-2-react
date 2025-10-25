@@ -1,6 +1,6 @@
-import type { User } from '@/types';
+import type { User } from "@/types";
 
-const SESSION_KEY = 'ticketapp_session';
+const SESSION_KEY = "ticketapp_session";
 
 interface Session {
   token: string;
@@ -15,7 +15,7 @@ export const saveSession = (token: string, user: User): void => {
 export const getSession = (): Session | null => {
   const sessionStr = localStorage.getItem(SESSION_KEY);
   if (!sessionStr) return null;
-  
+
   try {
     return JSON.parse(sessionStr) as Session;
   } catch {

@@ -1,5 +1,5 @@
-import { createContext } from 'react';
-import type { AuthState } from '@/types';
+import type { AuthState } from "@/types";
+import { createContext } from "react";
 
 export interface AuthContextValue extends AuthState {
   login: (email: string, password: string) => Promise<void>;
@@ -7,6 +7,8 @@ export interface AuthContextValue extends AuthState {
   logout: () => void;
 }
 
-export const AuthContext = createContext<AuthContextValue | undefined>(undefined);
+export const AuthContext = createContext<AuthContextValue | undefined>(
+  undefined,
+);
 
-AuthContext.displayName = 'AuthContext';
+AuthContext.displayName = "AuthContext";

@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "react-router";
 import { useAuth } from "@/hooks/useAuth";
+import { Link, useNavigate } from "react-router";
 
 const Header = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -7,7 +7,7 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
 
   return (

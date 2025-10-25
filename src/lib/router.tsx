@@ -1,9 +1,9 @@
-import HomePage from "@/pages/Home";
+import { ProtectedRoute } from "@/components/routing/ProtectedRoute";
 import Login from "@/pages/Auth/Login";
 import Signup from "@/pages/Auth/Signup";
 import Dashboard from "@/pages/Dashboard";
+import HomePage from "@/pages/Home";
 import TicketsPage from "@/pages/Tickets";
-import { ProtectedRoute } from "@/components/routing/ProtectedRoute";
 import { createBrowserRouter } from "react-router";
 
 const router = createBrowserRouter([

@@ -1,11 +1,17 @@
-import type { InputHTMLAttributes } from "react";
+import type { SelectHTMLAttributes } from "react";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface SelectOption {
+  value: string;
   label: string;
-  error?: string;
 }
 
-export function Input({ label, error, id, ...props }: InputProps) {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  error?: string;
+  options: SelectOption[];
+}
+
+export function Select({ label, error, id, options, ...props }: SelectProps) {
   return (
     <div className="w-full">
       <label
@@ -14,7 +20,7 @@ export function Input({ label, error, id, ...props }: InputProps) {
       >
         {label}
       </label>
-      <input
+      <select
         id={id}
         {...props}
         className={`w-full rounded-lg border px-4 py-2 transition outline-none focus:border-transparent focus:ring-2 focus:ring-blue-500 ${
@@ -22,7 +28,13 @@ export function Input({ label, error, id, ...props }: InputProps) {
         }`}
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-error` : undefined}
-      />
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
       {error && (
         <p id={`${id}-error`} className="mt-1 text-sm text-red-600">
           {error}

@@ -1,6 +1,6 @@
 const WavyBackground = () => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 w-full">
+    <div className="absolute right-0 bottom-0 left-0 w-full">
       <svg
         viewBox="0 0 1440 320"
         className="w-full"
