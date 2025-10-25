@@ -2,8 +2,8 @@
 
 A modern, full-featured ticket management application built with React, TypeScript, and Tailwind CSS. This application provides a complete solution for managing support tickets with authentication, dashboard analytics, and full CRUD operations.
 
-🔗 **Live Demo:** [https://your-deployment-url.vercel.app](https://your-deployment-url.vercel.app)  
-📦 **Repository:** [https://github.com/your-username/ticketflow-react](https://github.com/your-username/ticketflow-react)
+🔗 **Live Demo:** [https://hng-stage-2-react-iota.vercel.app/](https://hng-stage-2-react-iota.vercel.app/)  
+📦 **Repository:** [https://github.com/BenedictUmeozor/hng-stage-2-react](https://github.com/BenedictUmeozor/hng-stage-2-react)
 
 ## 🚀 Technologies Used
 
@@ -55,8 +55,8 @@ src/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/ticketflow-react.git
-cd ticketflow-react/react
+git clone https://github.com/BenedictUmeozor/hng-stage-2-react.git
+cd hng-stage-2-react
 ```
 
 ### 2. Install Dependencies
