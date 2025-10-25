@@ -50,3 +50,32 @@ export interface ToastType {
   type: 'success' | 'error' | 'info' | 'warning';
   message: string;
 }
+
+// Ticket Management Types
+export interface Ticket {
+  id: string;
+  title: string;
+  description: string;
+  status: 'open' | 'in_progress' | 'closed';
+  priority: 'low' | 'medium' | 'high';
+  createdAt: string;
+}
+
+export interface TicketState {
+  tickets: Ticket[];
+  loading: boolean;
+}
+
+export type TicketAction =
+  | { type: 'SET_TICKETS'; payload: Ticket[] }
+  | { type: 'ADD_TICKET'; payload: Ticket }
+  | { type: 'UPDATE_TICKET'; payload: Ticket }
+  | { type: 'DELETE_TICKET'; payload: string }
+  | { type: 'SET_LOADING'; payload: boolean };
+
+export interface StatCardProps {
+  icon: ReactNode;
+  label: string;
+  count: number;
+  colorClass: string;
+}
