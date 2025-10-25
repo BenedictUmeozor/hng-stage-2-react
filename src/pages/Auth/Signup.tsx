@@ -1,4 +1,5 @@
 import { useNavigate, Link } from 'react-router';
+import { useEffect } from 'react';
 import { AuthLayout } from '@/components/layout/AuthLayout';
 import { Input } from '@/components/forms/Input';
 import { Button } from '@/components/forms/Button';
@@ -9,8 +10,15 @@ import { validateSignupForm } from '@/lib/validation';
 
 export default function Signup() {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signup, isAuthenticated } = useAuth();
   const { showToast } = useToast();
+
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, navigate]);
 
   const { values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit } = useForm({
     initialValues: { name: '', email: '', password: '', confirmPassword: '' },

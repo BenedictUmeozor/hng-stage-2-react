@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
-import { useCallback, useMemo, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import type { TicketAction, TicketState, Ticket } from '@/types';
 import { TicketContext } from './TicketContext.context';
+import { loadTickets, saveTickets } from '@/lib/ticketStorage';
 
 const mockTickets: Ticket[] = [
   { id: '1', title: 'Fix login bug', description: 'Users cannot login with valid credentials', status: 'open', priority: 'high', createdAt: '2025-10-20T10:00:00Z' },
@@ -13,8 +14,10 @@ const mockTickets: Ticket[] = [
   { id: '7', title: 'Email notifications', description: 'Send alerts for ticket updates', status: 'closed', priority: 'medium', createdAt: '2025-10-17T13:00:00Z' }
 ];
 
+// Load tickets from localStorage or use mock data
+const storedTickets = loadTickets();
 const initialState: TicketState = {
-  tickets: mockTickets,
+  tickets: storedTickets || mockTickets,
   loading: false,
 };
 
@@ -43,6 +46,11 @@ const ticketReducer = (state: TicketState, action: TicketAction): TicketState =>
 
 export function TicketProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(ticketReducer, initialState);
+
+  // Save tickets to localStorage whenever they change
+  useEffect(() => {
+    saveTickets(state.tickets);
+  }, [state.tickets]);
 
   const addTicket = useCallback((ticket: Omit<Ticket, 'id' | 'createdAt'>) => {
     const newTicket: Ticket = {

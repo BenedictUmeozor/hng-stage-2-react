@@ -18,12 +18,20 @@ const Header = () => {
         </Link>
         <nav className="flex items-center gap-4">
           {isAuthenticated ? (
-            <button
-              onClick={handleLogout}
-              className="rounded-md border border-blue-600 px-4 py-2 text-blue-600 transition-colors hover:bg-blue-50"
-            >
-              Logout
-            </button>
+            <>
+              <Link
+                to="/dashboard"
+                className="rounded-md px-4 py-2 text-gray-700 transition-colors hover:bg-gray-100"
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="rounded-md border border-blue-600 px-4 py-2 text-blue-600 transition-colors hover:bg-blue-50"
+              >
+                Logout
+              </button>
+            </>
           ) : (
             <>
               <Link
