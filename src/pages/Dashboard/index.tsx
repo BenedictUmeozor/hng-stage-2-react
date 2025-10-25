@@ -23,10 +23,10 @@ export default function Dashboard() {
 
       <main className="mx-auto max-w-[1440px] px-4 py-12 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
             Welcome back, {user?.name || "User"}!
           </h1>
-          <p className="mt-2 text-lg text-gray-600">
+          <p className="mt-2 text-base sm:text-lg text-gray-600">
             Here is an overview of your ticket management system.
           </p>
         </div>

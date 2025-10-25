@@ -113,11 +113,11 @@ export default function TicketsPage() {
       <div className="flex-1">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
-          <div className="mb-8 flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-gray-900">
+          <div className="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
               Ticket Management
             </h1>
-            <Button onClick={handleCreateTicket}>
+            <Button onClick={handleCreateTicket} className="w-full sm:w-auto">
               <Plus size={20} className="mr-2 inline" />
               Create Ticket
             </Button>
